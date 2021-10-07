@@ -13,17 +13,14 @@ const items = (
 ) => {
   switch (type) {
     case types.ADD:
-      // const searchName = state.contacts
-      //   .map((cont) => cont.name)
-      //   .includes(payload.name);
-      // const messege = `${payload.name} is already in contacts`;
-      // if (searchName) {
-      //   alert(messege);
-      // } else {
-      //   return [...state, payload];
-      // }
-      // break;
-      return [...state, payload];
+      const searchName = state.map((cont) => cont.name).includes(payload.name);
+      const messege = `${payload.name} is already in contacts`;
+      if (searchName) {
+        alert(messege);
+        return [...state];
+      } else {
+        return [...state, payload];
+      }
 
     case types.DELETE:
       return state.filter((contact) => contact.name !== payload);
@@ -32,28 +29,6 @@ const items = (
       return state;
   }
 };
-
-// addContact = ({ name, number }) => {
-//   const contact = {
-//     id: uuidv4(),
-//     name: name,
-//     number: number,
-//   };
-
-//   const searchName = this.state.contacts
-// .map(cont => cont.name)
-// .includes(contact.name);
-
-//   const messege = `${contact.name} is already in contacts`;
-
-//   if (searchName) {
-//     alert(messege);
-//   } else {
-//     this.setState(({ contacts }) => ({
-//       contacts: [contact, ...contacts],
-//     }));
-//   }
-// };
 
 const filter = (state = "", { type, payload }) => {
   switch (type) {
