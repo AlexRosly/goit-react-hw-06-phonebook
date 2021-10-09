@@ -1,21 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import phoneBookActions from "../../redux/actions";
-import { Button, List, Span } from "./ContactList.styled";
+import { Button, List, Span, Paragraf, Item } from "./ContactList.styled";
 
 const ContactList = ({ contacts, onDelete }) => (
-  <ul>
+  <Item>
     {contacts.map((contact) => (
       <List key={contact.name}>
-        <p>
+        <Paragraf>
           {contact.name}: <Span>{contact.number}</Span>
-        </p>
+        </Paragraf>
         <Button type="button" onClick={() => onDelete(contact.name)}>
           Delete
         </Button>
       </List>
     ))}
-  </ul>
+  </Item>
 );
 
 const getVisibleContact = (allContacts, filter) => {
@@ -25,18 +25,6 @@ const getVisibleContact = (allContacts, filter) => {
     contact.name.toLowerCase().includes(normalizeFilter)
   );
 };
-
-// const mapStateToProps = state => {
-//     const { filter, items } = state.contacts;
-//     const normalizeFilter = filter.toLowerCase();
-
-//     const visibleContact = items.filter((contact) =>
-//       contact.name.toLowerCase().includes(normalizeFilter));
-
-//     return {
-//         contacts: visibleContact,
-//     }
-// };
 
 const mapStateToProps = ({ contacts: { items, filter } }) => ({
   contacts: getVisibleContact(items, filter),

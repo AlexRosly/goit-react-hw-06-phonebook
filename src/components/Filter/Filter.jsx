@@ -13,6 +13,7 @@ const Filter = ({ value, onChange }) => (
 const mapStateToProps = (state) => ({
   value: state.contacts.filter,
 });
+
 const mapDispatchToProps = (dispatch) => ({
   onChange: (e) =>
     dispatch(phoneBookActions.changeFilter(e.currentTarget.value)),

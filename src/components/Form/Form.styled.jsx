@@ -4,6 +4,7 @@ export const FormSection = styled.div`
   width: 500px;
   border: 2px solid black;
   border-radius: 5px;
+  background-color: #f3f6f4;
 `;
 
 export const Forms = styled.form`
@@ -41,4 +42,5 @@ export const Button = styled.button`
   width: 200px;
   border-radius: 5px;
   background-color: #00ff00;
+  cursor: pointer;
 `;
